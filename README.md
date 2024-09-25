@@ -5,10 +5,15 @@ from Roman numerals to Arabic numerals and vice versa.
 
 ## Getting Started
 
-Run:
+Run in the terminal:
 
 ```
 mvn clean install
+```
+
+## Running Locally:
+```
+mvn spring-boot:run
 ```
 
 ## Arabic to Roman
