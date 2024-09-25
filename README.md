@@ -6,15 +6,26 @@ from Roman numerals to Arabic numerals and vice versa.
 ## Getting started
 
 Run in the terminal:
-
-```
+```shell
 mvn clean install
 ```
 
-## Running locally (Spring Boot solutions):
+## Running locally (Java only solutions)
+
+Run in the terminal:
+```shell
+java -jar target/{name}-{version}.jar
 ```
+Follow the input and output in the terminal
+
+## Running locally (Spring Boot solutions)
+
+Run in the terminal:
+```shell
 mvn spring-boot:run
 ```
+Open your browser at http://localhost:8080/roman-numeral/{number}
+
 
 ## Arabic to Roman numerals
 
