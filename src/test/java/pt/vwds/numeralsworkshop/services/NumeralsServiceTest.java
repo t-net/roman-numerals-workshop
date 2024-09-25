@@ -77,20 +77,22 @@ public class NumeralsServiceTest {
 
     @ParameterizedTest(name = "expected roman numeral {1} for given arabic numeral {0}")
     @MethodSource("getArgumentsForToRomanNumeral")
-    @DisplayName("toRomanNumeral - Returns Roman numeral for a given Arabic numeral")
-    void shouldReturnRomanNumerals(int given, String expected) {
+    @DisplayName("toRomanNumeral - Should return Roman numeral for a given Arabic numeral")
+    void toRomanNumeral_shouldReturnRomanNumerals(int given, String expected) {
         Assertions.assertEquals(expected, numeralsService.toRomanNumeral(given));
     }
 
-    @ParameterizedTest(name = "expected error for given arabic numeral {0} smaller than 1")
+    @ParameterizedTest(name = "expected error for given arabic numeral {0}")
     @ValueSource(ints = {0, -1, -100})
-    void shouldThrowAnErrorForSmallerThan1(int given) {
+    @DisplayName("toRomanNumeral - Should throw an error for numerals smaller than 1")
+    void toRomanNumeral_shouldThrowAnErrorForSmallerThan1(int given) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> numeralsService.toRomanNumeral(given));
     }
 
-    @ParameterizedTest(name = "expected error for given arabic numeral {0} larger than 3999")
+    @ParameterizedTest(name = "expected error for given arabic numeral {0}")
     @ValueSource(ints = {4000, 4999, 10000})
-    void shouldThrowAnErrorForBiggerThan3999(int given) {
+    @DisplayName("toRomanNumeral - Should throw an error for numerals larger than 3999")
+    void toRomanNumeral_shouldThrowAnErrorForBiggerThan3999(int given) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> numeralsService.toRomanNumeral(given));
     }
 }

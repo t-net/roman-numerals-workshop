@@ -15,7 +15,11 @@ public class NumeralsController {
     }
 
     @GetMapping("/roman-numeral/{number}")
-    public String GetRomanNumeral(@PathVariable("number") int number) {
-        return this.numeralsService.toRomanNumeral(number);
+    public String getRomanNumeral(@PathVariable("number") int number) {
+        try {
+            return this.numeralsService.toRomanNumeral(number);
+        } catch (IllegalArgumentException e) {
+            return e.getMessage();
+        }
     }
 }

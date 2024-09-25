@@ -1,5 +1,6 @@
 package pt.vwds.numeralsworkshop.controllers;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,12 +25,25 @@ public class NumeralsControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void testGetRomanNumeral() throws Exception {
+    @DisplayName("GET /roman-numeral - Should return the roman numeral for the given number")
+    public void getRomanNumeral_shouldReturnRomanNumerals() throws Exception {
         when(numeralsService.toRomanNumeral(999)).thenReturn("mock-roman-numeral");
 
         mockMvc.perform(get("/roman-numeral/999"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("mock-roman-numeral"));
+
+        verify(numeralsService, times(1)).toRomanNumeral(999);
+    }
+
+    @Test
+    @DisplayName("GET /roman-numeral - Should return an error message when the number is invalid")
+    public void getRomanNumeral_shouldReturnErrorWhenInvalidNumber() throws Exception {
+        when(numeralsService.toRomanNumeral(999)).thenThrow(new IllegalArgumentException("mock-error-message"));
+
+        mockMvc.perform(get("/roman-numeral/999"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("mock-error-message"));
 
         verify(numeralsService, times(1)).toRomanNumeral(999);
     }
