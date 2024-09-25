@@ -3,7 +3,7 @@
 This is a workshop to practice test driven development and refactoring in Java. The goal is to implement a converter
 from Roman numerals to Arabic numerals and vice versa.
 
-## Getting Started
+## Getting started
 
 Run in the terminal:
 
@@ -11,14 +11,14 @@ Run in the terminal:
 mvn clean install
 ```
 
-## Running Locally:
+## Running locally (Spring Boot solutions):
 ```
 mvn spring-boot:run
 ```
 
-## Arabic to Roman
+## Arabic to Roman numerals
 
-Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. They range from 1 to 3999.
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. They range from 1 to 3999 (for the simplicity of this exercise).
 
 | Arabic |   Roman    |
 |:------:|:----------:|
@@ -73,3 +73,10 @@ Roman numerals are represented by seven different symbols: I, V, X, L, C, D and 
 | 2,002  |    MMII    |
 | 2,100  |    MMC     |
 | 3,000  |    MMM     |
+
+---
+
+### Author
+Tinette Müller
+
+
