@@ -1,8 +1,11 @@
 package pt.vwds.numeralsworkshop.services;
 
-public class NumbersConverter {
+import org.springframework.stereotype.Component;
 
-    public static String toRomanNumeral(int number) {
+@Component
+public class NumeralsService {
+
+    public String toRomanNumeral(int number) {
         if (number < 1 || number > 3999) {
             throw new IllegalArgumentException("Number should be larger than 0 and smaller than 4000");
         }
@@ -17,7 +20,7 @@ public class NumbersConverter {
         return thousands + hundreds + tens + ones;
     }
 
-    private static String romanNumeral(int n, String one, String five, String ten) {
+    private String romanNumeral(int n, String one, String five, String ten) {
         if (n < 1) {
             return "";
         }

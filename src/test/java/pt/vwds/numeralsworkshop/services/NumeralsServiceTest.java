@@ -6,10 +6,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.stream.Stream;
 
-public class NumbersConverterTest {
+@SpringBootTest
+public class NumeralsServiceTest {
+
+    @Autowired
+    private NumeralsService numeralsService;
+
 
     private static Stream<Arguments> getArgumentsForToRomanNumeral() {
         return Stream.of(
@@ -72,19 +79,18 @@ public class NumbersConverterTest {
     @MethodSource("getArgumentsForToRomanNumeral")
     @DisplayName("toRomanNumeral - Returns Roman numeral for a given Arabic numeral")
     void shouldReturnRomanNumerals(int given, String expected) {
-        Assertions.assertEquals(expected, NumbersConverter.toRomanNumeral(given));
+        Assertions.assertEquals(expected, numeralsService.toRomanNumeral(given));
     }
 
     @ParameterizedTest(name = "expected error for given arabic numeral {0} smaller than 1")
     @ValueSource(ints = {0, -1, -100})
     void shouldThrowAnErrorForSmallerThan1(int given) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> NumbersConverter.toRomanNumeral(given));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> numeralsService.toRomanNumeral(given));
     }
 
     @ParameterizedTest(name = "expected error for given arabic numeral {0} larger than 3999")
     @ValueSource(ints = {4000, 4999, 10000})
     void shouldThrowAnErrorForBiggerThan3999(int given) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> NumbersConverter.toRomanNumeral(given));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> numeralsService.toRomanNumeral(given));
     }
-
 }
